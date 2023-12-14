@@ -1,35 +1,37 @@
-from queue import Queue
-import wikipediaapi
-import time
+import copy
 
-user_agent = "MsOrret'sWikipediaGame/1.0 (orret.deborah@pusd.us)"
 
-wiki_wiki = wikipediaapi.Wikipedia(user_agent, "en")
+# Define a function that takes in a state as a dictionary and returns True if the state meets the conditions and False if it does not
+def isValid(state):
+if state["wolf"] == state["goat"] and state["wolf"] != state["person"]
+return False
+elif state["goat"] == state["cabbage"] and state["goat"] != state["person"]
+return False
+else:
+return True
 
-# HELPER FUNCTION: fetch_links(page) passes in a wikipedia page and returns a list of all the pages linked from that page
-def fetch_links(page):
-    links_list = []
-    links = page.links
-    for title in sorted(links.keys()):
-        links_list.append(title)
-        
-    return links_list
 
-#IN CLASS: Finish the definition of the wikipedia_game_solver using a Breadth-First-Search Traversal
-def wikipedia_game_solver(start_page, target_page):
-    print('Working on it...')
-    start_time = time.time()
-  
-    # FINISH THE CODE HERE
 
-    end_time = time.time()
-    print("This algorithm took", end_time-start_time, "seconds to run!")
-  
-    return path
 
-# Example usage:
-start_page = wiki_wiki.page('Nina Tandon')
-target_page = wiki_wiki.page('Italian language')
-path = wikipedia_game_solver(start_page, target_page)
-print("Shortest path:", path)
+# Define a function that takes in a state as a dictionary and returns a list of all valid states that can be reached from 1 move of the input state
+# This function will need to call the function isValid(state)
+def get_next_states(state):
 
+
+next_states = []
+
+
+same_side = []
+
+
+for thing in state:
+if state["person"] == state thing != "person":
+same_side.append(thing)
+for thing in same_side:
+temp_state = copy.deepcopy(state)
+temp_state[thing] = not state[thing]
+temp_state["person"] = not state["person"]
+
+
+if(isValid(temp_state) == True):
+next_states.append(temp_state)
